@@ -12,6 +12,7 @@ body
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
+	background-color: gray;
 }
 
 h1
@@ -20,6 +21,7 @@ h1
 	font-weight: 400;
 	color: #C0D06F;
 	margin: 20px;
+	text-align: left;
 }
 
 .jumpers
@@ -54,12 +56,21 @@ h1
 .navbar
 {
 	min-height: 57px;
+	
 }
 
 .bg-jumpers
 {
-	background-color: #91a33b !important;
+	background-color: #707070 !important;
 }
+
+
+#mainmenu
+{
+	font-size: 24px;
+}
+
+
 
 a.tilelink2
 {
@@ -124,4 +135,10 @@ a.tilelink2
 	background-color:#114677;
 	margin-bottom: 10px;
 }
+footer
+{	
+	margin-top: 50px;
+	background-color: #707070 !important;
+}
+
 
