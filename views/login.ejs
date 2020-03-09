@@ -1,30 +1,28 @@
 
 	
-	<main>		
-		<section class="jumpers">	
+	<main>
+		<section class="jumpers">
 			<div class="container">
-				<header>				
-					<h1>Login</h1>						
+				<header>
+					<h1>Login</h1>
 				</header>
-
-                <form>
-                    Login:
-                    <br />
-                    <input type="text" id="login"/>
-                    <br />
-                    Password:
-                    <br />
-                    <input type="text" name="password"/>
-                    <br />
-                    <input type="submit" id="wsad"/>
-                    <br />
-                    <div id="result">
-                
-                        </div>
-                </form>
-			</div>	
+				<% if (messages.error)  { %>
+					<%= messages.error %>
+					<% } 
+					%>
+				<form action="/login" method="POST">
+					<div>
+						<label for="login">User Name</label></br>
+						<input type="text" id="login" name="name" required/>
+					</div>
+					<div>
+						<label for="password">Password</label></br>
+						<input type="password" id="password" name="password" required/>
+                    </div>    
+					<button type="submit">Login</button>
+				</form>
 				
+			</div>
 		</section>
-		
 	</main>
 	

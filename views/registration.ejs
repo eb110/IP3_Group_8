@@ -1,23 +1,37 @@
 
 	
 	<main>
-		
 		<section class="jumpers">
-		
 			<div class="container">
-				
 				<header>
-					
-					<h1>Registration</h1>
-
-						
+					<h1>Register</h1>
 				</header>
-				
-			
-				
-			</div>	
-				
+	
+				<form action="/registration" method="POST">
+					<div>
+						<label for="login">User Name</label></br>
+						<input type="text" id="login" name="name" required/>
+					</div>
+					<div>
+						<label for="password">Password</label></br>
+						<input type="password" id="password" name="password" required/>
+					</div>
+					<div>
+						<label for="repassword">Retype Password</label></br>
+						<input type="password" id="repassword" name="repassword" required/>
+					</div>
+					<div>
+						<label for="email">Email</label></br>
+						<input type="email" id="email" name="email" required/>
+					</div>
+					<div>
+						<label for="car">Car</label></br>
+						<input type="text" id="car" name="car" required/>
+					</div>
+					<button type="submit">Register</button>
+				</form>
+
+			</div>
 		</section>
-		
 	</main>
 	

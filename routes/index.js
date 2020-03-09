@@ -1,47 +1,131 @@
 //call express router
 const express = require('express')
 const router = express.Router();
+//hashing feature
+const bcrypt = require('bcryptjs')
+//passport libary
+const passport = require('passport')
+
+
+//hook up passport configuration
+const initializePassport = require('../passport-config')
+//initialization
+initializePassport(
+    passport, 
+       //this is getUserByEmail function in passport-config.js file
+    name => users.find(user => user.name === name),
+    //same stuff but for getUserById
+    id => users.find(user => user.id === id)
+    //atm we have initialized our passport by user typed authentication
+)
+
+const users = []
 
 const MainPages = require('../controllers/MainPages')
 router.get('/', MainPages.home);
-router.get('/login', MainPages.login);
-router.get('/registration', MainPages.registration);
-router.get('/contact', MainPages.contact);
+router.get('/login', checkNotAuthenticated, MainPages.login);
+router.get('/registration', checkNotAuthenticated, MainPages.registration);
+router.get('/contact', checkAuthenticated, MainPages.contact);
 
 const hondactr = require('../controllers/hondactr')
-router.get('/honda', hondactr.honda);
-router.get('/civic', hondactr.civic);
-router.get('/hrv', hondactr.hrv);
-router.get('/crv', hondactr.crv);
+router.get('/honda', checkAuthenticated, hondactr.honda);
+router.get('/civic', checkAuthenticated, hondactr.civic);
+router.get('/hrv', checkAuthenticated, hondactr.hrv);
+router.get('/crv', checkAuthenticated, hondactr.crv);
 
 const fordctr = require('../controllers/fordctr')
-router.get('/ford', fordctr.ford);
-router.get('/mustang', fordctr.mustang);
-router.get('/focus', fordctr.focus);
-router.get('/fiesta', fordctr.fiesta);
+router.get('/ford', checkAuthenticated, fordctr.ford);
+router.get('/mustang', checkAuthenticated, fordctr.mustang);
+router.get('/focus', checkAuthenticated, fordctr.focus);
+router.get('/fiesta', checkAuthenticated, fordctr.fiesta);
 
 const audictr = require('../controllers/audictr')
-router.get('/audi', audictr.audi);
-router.get('/a4', audictr.a4);
-router.get('/a3', audictr.a3);
-router.get('/a5', audictr.a5);
+router.get('/audi', checkAuthenticated, audictr.audi);
+router.get('/a4', checkAuthenticated, audictr.a4);
+router.get('/a3', checkAuthenticated, audictr.a3);
+router.get('/a5', checkAuthenticated, audictr.a5);
 
 const bmwctr = require('../controllers/bmwctr')
-router.get('/bmw', bmwctr.bmw);
-router.get('/series_1', bmwctr.series_1);
-router.get('/series_3', bmwctr.series_3);
-router.get('/series_5', bmwctr.series_5);
+router.get('/bmw', checkAuthenticated, bmwctr.bmw);
+router.get('/series_1', checkAuthenticated, bmwctr.series_1);
+router.get('/series_3', checkAuthenticated, bmwctr.series_3);
+router.get('/series_5', checkAuthenticated, bmwctr.series_5);
 
 const mercedesctr = require('../controllers/mercedesctr')
-router.get('/mercedes', mercedesctr.mercedes);
-router.get('/a_class', mercedesctr.a_class);
-router.get('/b_class', mercedesctr.b_class);
-router.get('/c_class', mercedesctr.c_class);
+router.get('/mercedes', checkAuthenticated, mercedesctr.mercedes);
+router.get('/a_class', checkAuthenticated, mercedesctr.a_class);
+router.get('/b_class', checkAuthenticated, mercedesctr.b_class);
+router.get('/c_class', checkAuthenticated, mercedesctr.c_class);
 
 const nissanctr = require('../controllers/nissanctr')
-router.get('/nissan', nissanctr.nissan);
-router.get('/juke', nissanctr.juke);
-router.get('/micra', nissanctr.micra);
-router.get('/leaf', nissanctr.leaf);
+router.get('/nissan', checkAuthenticated, nissanctr.nissan);
+router.get('/juke', checkAuthenticated, nissanctr.juke);
+router.get('/micra', checkAuthenticated, nissanctr.micra);
+router.get('/leaf', checkAuthenticated, nissanctr.leaf);
+
+
+router.get('/logout', (req, res) => {
+  req.logOut()
+  res.redirect('login')
+})
+
+//checkNotAuthenticated,
+
+//we are going to use passport middleware
+router.post('/login',  checkNotAuthenticated, passport.authenticate('local', {
+    //we are going to modify it
+    successRedirect: '/',
+    failureRedirect: '/login',
+    //we want to flash message
+    failureFlash: true
+}))
+
+router.post('/registration', checkNotAuthenticated, async (req, res) => {
+    try{
+        const password = req.body.password
+        const saltRounds = 10
+        const hashedPassword = await new Promise((resolve, reject) => {
+            bcrypt.hash(password, saltRounds, function(err, hash){
+                if(err)reject(err)
+                resolve(hash)
+            })
+        })
+        //populate data into data structure
+        users.push({
+            id: Date.now().toString(),
+            name: req.body.name,
+            email: req.body.email,
+            password: hashedPassword
+        })
+        //if success render login page
+        res.redirect('/login')
+    } catch{
+        //if failed reload register
+        res.redirect('/register')
+    }
+    //temporary printout
+    console.log(users)
+})
+
+//this will avoid the ability to visit pages without authentication
+function checkAuthenticated(req, res, next){
+    //because of passport we can use isAuthenticated function
+    //this function has to be applied to the routing page
+    if(req.isAuthenticated()) {
+        //if user logged then go next
+        return next()
+    }
+    //if not redirect
+    res.redirect('/login')
+    }
+    
+    //function to avoid double login
+    function checkNotAuthenticated(req, res, next){
+        if(req.isAuthenticated()){
+            return res.redirect('/')
+        }
+        //next just stays your browsing as it is
+        next()
+    }
 
 module.exports = router;
