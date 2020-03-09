@@ -6,12 +6,6 @@ const flash = require('express-flash')
 const session = require('express-session')
 const passport = require('passport')
 
-const methodOverride = require('method-override')
-
-//method override initialization
-//_method has to be included in index page logout form
-app.use(methodOverride('_method'))
-
 //layout
 const expressLayouts = require('express-ejs-layouts')
 const path = require('path');
