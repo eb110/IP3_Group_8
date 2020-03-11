@@ -98,6 +98,10 @@ router.post('/registration', checkNotAuthenticated, async (req, res) => {
         req.flash('error', 'wrong password')
         res.redirect('/registration')
     }
+    else if(req.body.email !== req.body.reemail){
+        req.flash('error', 'wrong email')
+        res.redirect('/registration')
+    }
     else{
     try{
         const password = req.body.password
