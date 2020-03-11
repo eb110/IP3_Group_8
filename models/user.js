@@ -1,15 +1,20 @@
 /*we have to initiate mongoose as we are going to use
 its method 'model'*/
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 //model
-const Auto = mongoose.model('Auto', {
-    marka:{
+const User = mongoose.model('User', {
+    userName:{
         type: String
     },
-    model:{
+    email:{
+        type: String
+    },
+    password: {
         type: String
     }
-});
+})
+
 /*we have to export our function as 
 we want to use it*/
-module.exports = Auto;
+
+module.exports = User

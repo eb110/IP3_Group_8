@@ -6,7 +6,10 @@
 				<header>
 					<h1>Register</h1>
 				</header>
-	
+				<% if (messages.error)  { %>
+					<%= messages.error %>
+					<% } 
+					%>
 				<form action="/registration" method="POST">
 					<div>
 						<label for="login">User Name</label></br>
@@ -25,8 +28,8 @@
 						<input type="email" id="email" name="email" required/>
 					</div>
 					<div>
-						<label for="car">Car</label></br>
-						<input type="text" id="car" name="car" required/>
+						<label for="reemail">Retype Email</label></br>
+						<input type="email" id="reemail" name="reemail" required/>
 					</div>
 					<button type="submit">Register</button>
 				</form>

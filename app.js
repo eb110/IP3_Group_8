@@ -17,7 +17,7 @@ app.use(session({
     secret: 'dupa',
     resave: false,
     saveUninitialized: false
-}))
+}));
 
 //passport function initialization
 app.use(passport.initialize())

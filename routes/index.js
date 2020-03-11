@@ -6,6 +6,19 @@ const bcrypt = require('bcryptjs')
 //passport libary
 const passport = require('passport')
 
+//db 
+require('../mongoose')
+const User = require('../models/user')
+//new ele
+const createUser = async (data) => {
+    try {
+        const user = new User(data)
+        await user.save()
+        console.log(user)
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 //hook up passport configuration
 const initializePassport = require('../passport-config')
@@ -66,7 +79,7 @@ router.get('/leaf', checkAuthenticated, nissanctr.leaf);
 
 router.get('/logout', (req, res) => {
   req.logOut()
-  res.redirect('login')
+  res.redirect('/login')
 })
 
 //checkNotAuthenticated,
@@ -81,6 +94,11 @@ router.post('/login',  checkNotAuthenticated, passport.authenticate('local', {
 }))
 
 router.post('/registration', checkNotAuthenticated, async (req, res) => {
+    if(req.body.password !== req.body.repassword) {
+        req.flash('error', 'wrong password')
+        res.redirect('/registration')
+    }
+    else{
     try{
         const password = req.body.password
         const saltRounds = 10
@@ -91,20 +109,29 @@ router.post('/registration', checkNotAuthenticated, async (req, res) => {
             })
         })
         //populate data into data structure
+        
         users.push({
             id: Date.now().toString(),
             name: req.body.name,
             email: req.body.email,
             password: hashedPassword
         })
+        console.log(users)
+        /*
+        console.log('create user method initialization')
+        createUser({ 
+            userName: req.body.name,
+            email: req.body.email,
+            password: hashedPassword
+        })
+        */
         //if success render login page
         res.redirect('/login')
     } catch{
         //if failed reload register
-        res.redirect('/register')
+        res.redirect('/registration')
     }
-    //temporary printout
-    console.log(users)
+}
 })
 
 //this will avoid the ability to visit pages without authentication
