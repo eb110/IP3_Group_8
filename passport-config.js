@@ -14,7 +14,7 @@ function initialize(passport, getUserByName, getUserById){
     //we are calling the function durign the login session to make sure
     //the user data typed is correct
     const authenticateUser = async (name, password, done) => {
-        const user = getUserByName(name)
+        const user = await getUserByName(name)
         if(user == null){
             //we are calling null - not error - as error is for server malfunction
             //and here its just a wrong user
@@ -40,7 +40,8 @@ function initialize(passport, getUserByName, getUserById){
     //we will serialize user as a single id so to deserialize we call id
     passport.deserializeUser((id, done) => {
         //we have to add method getUserById to initialize
-        return done(null, getUserById(id))
+        const checkId = getUserById(id)
+        return done(null, checkId)
     }
     )
 }

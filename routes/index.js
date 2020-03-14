@@ -11,31 +11,6 @@ const users = []
 //db 
 const User = require('../models/user')
 
-//hook up passport configuration
-const initializePassport = require('../passport-config')
-//initialization
-initializePassport(
-    passport, 
-       //this is getUserByEmail function in passport-config.js file
-    name => users.find(user => user.name === name),
-    //same stuff but for getUserById
-    id => users.find(user => user.id === id)
-    //atm we have initialized our passport by user typed authentication
-)
-
-require('../mongoose')
-const User = require('../models/user')
-
-const createUser = async (data) => {
-    try {
-        const user = new User(data)
-        await user.save()
-        console.log(user)
-    } catch (error) {
-        console.log(error)
-    }
-}
-
 const MainPages = require('../controllers/MainPages')
 router.get('/', MainPages.home);
 router.get('/login', checkNotAuthenticated, MainPages.login);
@@ -84,6 +59,26 @@ router.get('/logout', (req, res) => {
   res.redirect('/login')
 })
 
+//hook up passport configuration
+const initializePassport = require('../passport-config')
+//initialization
+initializePassport(
+    passport, 
+       //this is getUserByEmail function in passport-config.js file
+    async name => {
+        const listUsers = await User.find({})
+        const check = listUsers.find(x => x.userName === name)
+        return check
+    },
+    //same stuff but for getUserById
+    async id => {
+        const listUsers = await User.find({})
+        const check = listUsers.find(x => x.id === id)
+        return check
+    }
+    //atm we have initialized our passport by user typed authentication
+)
+
 //checkNotAuthenticated,
 //we are going to use passport middleware
 router.post('/login',  checkNotAuthenticated, passport.authenticate('local', {
@@ -95,50 +90,44 @@ router.post('/login',  checkNotAuthenticated, passport.authenticate('local', {
 }))
 
 router.post('/registration', checkNotAuthenticated, async (req, res) => {
-    if(req.body.password !== req.body.repassword) {
+    if (req.body.password !== req.body.repassword) {
         req.flash('error', 'wrong password')
         res.redirect('/registration')
     }
-    else if(req.body.email !== req.body.reemail){
+    else if (req.body.email !== req.body.reemail) {
         req.flash('error', 'wrong email')
         res.redirect('/registration')
     }
-    else{
-    try{
-        const listUsers = await User.find({})
-        console.log(listUsers)
-        cosnole.log('1')
-        const checkUN = listUsers.find(x => x.userName === req.body.name)
-        console.log(checkUN == null ? '2' : checkUN.userName)
-        if(checkUN.userName !== null){
-            req.flash('error', 'type different user name')
+    else {
+        try {
+            const listUsers = await User.find({})
+            const checkUN = listUsers.find(x => x.userName === req.body.name)
+            if (checkUN != null) {
+                req.flash('error', 'type different user name')
+                res.redirect('/registration')
+            }
+            else {
+                const hashedPassword = await new Promise((resolve, reject) => {
+                    bcrypt.hash(req.body.password, 10, function (err, hash) {
+                        if (err) reject(err)
+                        resolve(hash)
+                    })
+                })
+                //populate data into data structure            
+                const newUser = new User({
+                    userName: req.body.name,
+                    email: req.body.email,
+                    password: hashedPassword
+                })
+                await newUser.save()
+                res.redirect('/login')
+            }
+        } catch{
+            //if failed reload register
+            console.log('tu wypierdala')
             res.redirect('/registration')
         }
-        console.log('3')
-        const hashedPassword = await new Promise((resolve, reject) => {
-            bcrypt.hash(req.body.password, 10, function(err, hash){
-                if(err)reject(err)
-                resolve(hash)
-            })
-        })
-        Console.log('all clear')
-        //populate data into data structure  
-        /*
-        const newUser = new User({
-            userName: req.body.name,
-            email: req.body.email,
-            password: hashedPassword
-        })      
-        */
-        Console.log('jest jest')
-      //  await newUser.save()
-        res.redirect('/login')        
-    } catch{
-        //if failed reload register
-        console.log('tu wypierdala')
-        res.redirect('/registration')
     }
-}
 })
 
 //this will avoid the ability to visit pages without authentication
