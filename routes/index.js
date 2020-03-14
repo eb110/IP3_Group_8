@@ -6,19 +6,9 @@ const bcrypt = require('bcryptjs')
 //passport libary
 const passport = require('passport')
 
-//db 
-require('../mongoose')
-const User = require('../models/user')
-//new ele
-const createUser = async (data) => {
-    try {
-        const user = new User(data)
-        await user.save()
-        console.log(user)
-    } catch (error) {
-        console.log(error)
-    }
-}
+
+
+const users = []
 
 //hook up passport configuration
 const initializePassport = require('../passport-config')
@@ -32,7 +22,18 @@ initializePassport(
     //atm we have initialized our passport by user typed authentication
 )
 
-const users = []
+require('../mongoose')
+const User = require('../models/user')
+
+const createUser = async (data) => {
+    try {
+        const user = new User(data)
+        await user.save()
+        console.log(user)
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 const MainPages = require('../controllers/MainPages')
 router.get('/', MainPages.home);
@@ -83,7 +84,6 @@ router.get('/logout', (req, res) => {
 })
 
 //checkNotAuthenticated,
-
 //we are going to use passport middleware
 router.post('/login',  checkNotAuthenticated, passport.authenticate('local', {
     //we are going to modify it
