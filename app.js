@@ -1,14 +1,30 @@
 
-const express = require('express');
-const app = express();
+const express = require('express')
+const app = express()
 
 const flash = require('express-flash')
 const session = require('express-session')
 const passport = require('passport')
 
+//import index.js
+const routes = require('./routes/index');
+
 //layout
 const expressLayouts = require('express-ejs-layouts')
 const path = require('path');
+
+//db
+const mongoose = require('mongoose')
+const url = 'mongodb+srv://eb110:fhekjrs343Df@cluster0-rnf08.mongodb.net/test?retryWrites=true&w=majority'
+
+mongoose.connect(url,{
+    useNewUrlParser: true,
+    useCreateIndex : true,
+    useUnifiedTopology : true
+})
+const db = mongoose.connection
+db.on('error', error => console.error(error))
+db.once('open', () => console.log('Connected to Mongoose'))
 
 app.use(flash())
 
@@ -31,8 +47,7 @@ app.use(express.urlencoded({ extended: false}))
 //body parser
 const bodyParser = require('body-parser');
 
-//import index.js
-const routes = require('./routes/index');
+
 
 //view engine
 app.set('view engine', 'ejs');
@@ -55,4 +70,4 @@ app.use(bodyParser.urlencoded({ extended: true}));
 //routes
 app.use('/', routes);
 
-module.exports = app;
+app.listen(process.env.PORT || 8080)

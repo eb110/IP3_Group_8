@@ -6,9 +6,10 @@ const bcrypt = require('bcryptjs')
 //passport libary
 const passport = require('passport')
 
-
-
 const users = []
+
+//db 
+const User = require('../models/user')
 
 //hook up passport configuration
 const initializePassport = require('../passport-config')
@@ -104,35 +105,37 @@ router.post('/registration', checkNotAuthenticated, async (req, res) => {
     }
     else{
     try{
-        const password = req.body.password
-        const saltRounds = 10
+        const listUsers = await User.find({})
+        console.log(listUsers)
+        cosnole.log('1')
+        const checkUN = listUsers.find(x => x.userName === req.body.name)
+        console.log(checkUN == null ? '2' : checkUN.userName)
+        if(checkUN.userName !== null){
+            req.flash('error', 'type different user name')
+            res.redirect('/registration')
+        }
+        console.log('3')
         const hashedPassword = await new Promise((resolve, reject) => {
-            bcrypt.hash(password, saltRounds, function(err, hash){
+            bcrypt.hash(req.body.password, 10, function(err, hash){
                 if(err)reject(err)
                 resolve(hash)
             })
         })
-        //populate data into data structure
-        
-        users.push({
-            id: Date.now().toString(),
-            name: req.body.name,
-            email: req.body.email,
-            password: hashedPassword
-        })
-        console.log(users)
+        Console.log('all clear')
+        //populate data into data structure  
         /*
-        console.log('create user method initialization')
-        createUser({ 
+        const newUser = new User({
             userName: req.body.name,
             email: req.body.email,
             password: hashedPassword
-        })
+        })      
         */
-        //if success render login page
-        res.redirect('/login')
+        Console.log('jest jest')
+      //  await newUser.save()
+        res.redirect('/login')        
     } catch{
         //if failed reload register
+        console.log('tu wypierdala')
         res.redirect('/registration')
     }
 }
