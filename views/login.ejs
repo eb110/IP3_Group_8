@@ -4,37 +4,24 @@
 		<section class="jumpers">
 			<div class="container">
 				<header>
-					<h1>REGISTER</h1>
+					<h1>LOGIN</h1>
 				</header>
 				<% if (messages.error)  { %>
 					<%= messages.error %>
 					<% } 
 					%>
-				<form action="/registration" method="POST">
+				<form action="/login" method="POST">
 					<div>
-						<label for="login">User Name:</label><br>
+						<label for="login">User Name:</label></br>
 						<input type="text" id="login" name="name" required/>
 					</div>
 					<div>
-						<label for="password">Password:</label><br>
+						<label for="password">Password:</label></br>
 						<input type="password" id="password" name="password" required/>
-					</div>
-					<div>
-						<label for="repassword">Retype Password:</label><br>
-						<input type="password" id="repassword" name="repassword" required/>
-					</div>
-					<div>
-						<label for="email">Email:</label><br>
-						<input type="email" id="email" name="email" required/>
-					</div>
-					<div>
-						<label for="reemail">Retype Email:</label><br>
-						<input type="email" id="reemail" name="reemail" required/>
-					</div> <br>
-					<button type="submit" id="submit">REGISTER</button>
-				</form><br>
-
+                    </div> <br>   
+					<button type="submit" id="submit">LOGIN</button>
+				</form> <br>
+				
 			</div>
 		</section>
 	</main>
-	
