@@ -48,8 +48,10 @@ h1
 
 .info
 {
-	padding: 20px;
-	font-size: 24px;
+	margin-top:10px;
+	padding: 10px;
+	font-size: 18px;
+	background-color: #2F3336;
 }
 
 .navbar
@@ -137,27 +139,18 @@ a.tilelink2
 footer
 {	
 	margin-top: 20px;
-	padding-top: 50px;
+	padding-top: 20px;
 	background-color: #707070 !important;
 }
 
 .marka
 {
 	color: black;
-	
-
+	font-weight: bold;
 }
 #submit
 {
-	letter-spacing: 5px;
-		
-}
-#googleMap{
-	
-	width: auto;
-	max-height: 300px;
-
-
+	letter-spacing: 5px;	
 }
 
 #popup, #popup1, #popup2  {
