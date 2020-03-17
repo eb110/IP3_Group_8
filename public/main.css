@@ -23,6 +23,10 @@ h1
 	text-align: auto;
 }
 
+.flashmsg
+{
+	color: #2f6b58;
+}
 .jumpers
 {
 	text-align: center;
