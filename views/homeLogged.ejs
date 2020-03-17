@@ -1,0 +1,131 @@
+<%- include('./partials/headerLog') %>
+
+<main>
+		
+    <section class="jumpers">
+    
+        <div class="container">
+            
+            <header>
+                
+                <h1>Welcome to Smart Repair!</h1>
+                <p>We are car enthusiasts who know the important role a car plays in the daily life of people, used as tools for work, entertainment and transport.
+				   If your car has broken down, and you are looking for some guidance and support as to the next step(s) necessary for getting your car back on the road,
+					we have all of the necessary material right here. If you want to have a go at trying to fix your car yourself, head over to the manuals section of the webpage. 
+						If you want to arrange a repair job with an expert mechanic who is local to you, then check out our affiliates section.</p>
+                    
+            </header>
+            
+            <div class="row">
+               
+                <div class="col-sm-6 col-md-4">
+                    
+                    <figure>
+                        <div id="popup"><b>FORD</b><br><br><p> Model's Available: 3 </p> <p>PDF's Available: 4</p> </div>
+                        <a href="ford"><img src="img/ford/FordLogo.jpg" alt="Ford"  id="jsPopup"></a>
+                        <figcaption>Ford</figcaption>
+                    
+                    </figure>
+                  
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                
+                    <figure class="figure">
+                        <a href="audi"><img src="img/audi/AudiLogo.jpg" alt="Audi"></a>
+                        <div class="overlay">
+                            <div><br><b>AUDI</b><p> Model's <br> Available: 3 <br> PDF's <br> Available: 11</p></div>
+                          </div>
+                        <figcaption>Audi</figcaption>
+                    </figure>
+
+
+                
+                </div>
+                
+                <div class="col-sm-6 col-md-4">
+                
+                    <figure>
+                        <div id="popup1"><b>MERCEDES</b><br><br><p> Model's Available: 3</p> <p>PDF's Available: 10</p></div>
+                        <a href="mercedes"><img src="img/merc/MercedesLogo1.jpg" alt="Mercedes" id="jsPopup1"></a>
+                        <figcaption>Mercedes</figcaption>
+                    </figure>
+                
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                
+                    <figure class="figure">
+                        <a href="nissan"><img src="img/nissan/NissanLogo.jpg" alt="Nissan"></a>
+                        <div class="overlay">
+                            <div><br><b>NISSAN</b><p> Model's <br> Available: 3 <br> PDF's <br> Available: 14</p></div>
+                          </div>
+                        <figcaption>Nissan</figcaption>
+                    </figure>
+                
+                </div>
+
+               
+
+                <div class="col-sm-6 col-md-4">
+                
+                    <figure>
+                        <div id="popup2"><b>BMW</b><br><br><p> Model's Available: 3</p> <p>PDF's Available: 5</p></div>
+                        <a href="bmw"><img src="img/bmw/BMWLogo.jpg" alt="BMW" id="jsPopup2"></a>
+                        <figcaption>BMW</figcaption>
+                    </figure>
+                
+                </div>
+                
+                <div class="col-sm-6 col-md-4">
+                
+                    <figure class="figure">
+                        <a href="honda"><img src="img/honda/HondaLogo.jpg" alt="Honda"></a>
+                        <div class="overlay">
+                            <div><br><b>HONDA</b><p> Model's <br> Available: 3 <br> PDF's <br> Available: 9</p></div>
+                          </div>
+                        <figcaption>Honda</figcaption>
+                    </figure>
+                
+                </div>
+                <script>
+
+                 var e = document.getElementById('jsPopup');
+                    
+                    e.onmouseover = function() {
+                      document.getElementById('popup').style.display = 'block';
+                    }
+                    
+                    e.onmouseout = function() {
+                      document.getElementById('popup').style.display = 'none';
+                    }   
+
+                    var e = document.getElementById('jsPopup1');
+                    
+                    e.onmouseover = function() {
+                      document.getElementById('popup1').style.display = 'block';
+                    }
+                    
+                    e.onmouseout = function() {
+                      document.getElementById('popup1').style.display = 'none';
+                    }   
+                    var e = document.getElementById('jsPopup2');
+                    
+                    e.onmouseover = function() {
+                      document.getElementById('popup2').style.display = 'block';
+                    }
+                    
+                    e.onmouseout = function() {
+                      document.getElementById('popup2').style.display = 'none';
+                    } 
+                
+                </script>
+            </div>
+            
+        </div>	
+            
+    </section>
+    
+</main>
+
+<%- include('./partials/footer') %>

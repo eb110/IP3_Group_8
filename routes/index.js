@@ -6,8 +6,6 @@ const bcrypt = require('bcryptjs')
 //passport libary
 const passport = require('passport')
 
-const users = []
-
 //db 
 const User = require('../models/user')
 
@@ -16,6 +14,7 @@ router.get('/', MainPages.home);
 router.get('/login', checkNotAuthenticated, MainPages.login);
 router.get('/registration', checkNotAuthenticated, MainPages.registration);
 router.get('/contact', checkAuthenticated, MainPages.contact);
+router.get('/homeLogged', checkAuthenticated, MainPages.homeLogged);
 
 const hondactr = require('../controllers/hondactr')
 router.get('/honda', checkAuthenticated, hondactr.honda);
@@ -83,7 +82,7 @@ initializePassport(
 //we are going to use passport middleware
 router.post('/login',  checkNotAuthenticated, passport.authenticate('local', {
     //we are going to modify it
-    successRedirect: '/',
+    successRedirect: '/homeLogged',
     failureRedirect: '/login',
     //we want to flash message
     failureFlash: true
