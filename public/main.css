@@ -152,6 +152,10 @@ footer
 {
 	letter-spacing: 5px;	
 }
+#pdf{
+	max-width:100px;
+	max-height:100px;
+}
 
 #popup, #popup1, #popup2  {
 	position: absolute ;
@@ -191,3 +195,18 @@ footer
 			display: none;
 			}
 	  }
+.gallery{
+	margin: 10px 50px;
+}
+.gallery img{
+	width: 230px;
+	padding: 5px;
+	filter: grayscale(100%);
+	transition: 1s;
+}
+.gallery img:hover{
+	
+	filter: grayscale(0);
+	transform: scale(1.1);
+}
+
