@@ -6,20 +6,20 @@
 				<header>
 					<h1>LOGIN</h1>
 				</header>
-				<% if (messages.error)  { %>
+				<h2 class="flashmsg"><% if (messages.error)  { %>
 					<%= messages.error %>
 					<% } 
-					%>
+					%></h2>
 				<form action="/login" method="POST">
 					<div>
-						<label for="login">User Name:</label></br>
-						<input type="text" id="login" name="name" required/>
+						<label for="login" id="label">User Name:</label><br>
+						<input type="text" id="login" name="name" placeholder="Enter name" required/>
 					</div>
 					<div>
-						<label for="password">Password:</label></br>
-						<input type="password" id="password" name="password" required/>
+						<label for="password" id="label">Password:</label><br>
+						<input type="password" id="password" name="password" placeholder="Enter password" required/>
                     </div> <br>   
-					<div><button class="mb-2" type="submit" id="submit">LOGIN</button></div>
+					<div><button class="mb-2" type="submit" id="submit">LOGIN</button></div> 
 					<div><a href="/registration">Not registered yet?</a></div>
 				</form> <br>
 				

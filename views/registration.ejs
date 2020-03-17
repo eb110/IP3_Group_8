@@ -6,30 +6,30 @@
 				<header>
 					<h1>REGISTER</h1>
 				</header>
-				<% if (messages.error)  { %>
+				<h2 class="flashmsg"><% if (messages.error)  { %>
 					<%= messages.error %>
 					<% } 
-					%>
+					%></h2>
 				<form action="/registration" method="POST">
 					<div>
-						<label for="login">User Name:</label><br>
-						<input type="text" id="login" name="name" required/>
+						<label for="login" id="label">User Name:</label><br>
+						<input type="text" id="login" name="name" placeholder="Enter name" required/>
 					</div>
 					<div>
-						<label for="password">Password:</label><br>
-						<input type="password" id="password" name="password" required/>
+						<label for="password" id="label">Password:</label><br>
+						<input type="password" id="password" name="password" placeholder="Enter password" required/>
 					</div>
 					<div>
-						<label for="repassword">Retype Password:</label><br>
-						<input type="password" id="repassword" name="repassword" required/>
+						<label for="repassword" id="label" >Retype Password:</label><br>
+						<input type="password" id="repassword" name="repassword" placeholder="Confirm password" required/>
 					</div>
 					<div>
-						<label for="email">Email:</label><br>
-						<input type="email" id="email" name="email" required/>
+						<label for="email" id="label">Email:</label><br>
+						<input type="email" id="email" name="email" placeholder="Enter email" required/>
 					</div>
 					<div>
-						<label for="reemail">Retype Email:</label><br>
-						<input type="email" id="reemail" name="reemail" required/>
+						<label for="reemail"id="label">Retype Email:</label><br>
+						<input type="email" id="reemail" name="reemail" placeholder="Confirm email" required/>
 					</div> <br>
 					<button type="submit" id="submit">REGISTER</button>
 				</form><br>
