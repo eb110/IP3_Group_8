@@ -89,7 +89,7 @@ router.post('/login',  checkNotAuthenticated, passport.authenticate('local', {
 }))
 
 router.post('/contact', (req, res) => {
-    req.flash('error', 'Message send')
+    req.flash('error', 'Message sent')
     res.redirect('/contact')
 } )
 
