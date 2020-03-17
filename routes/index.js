@@ -88,6 +88,11 @@ router.post('/login',  checkNotAuthenticated, passport.authenticate('local', {
     failureFlash: true
 }))
 
+router.post('/contact', (req, res) => {
+    req.flash('error', 'Message send')
+    res.redirect('/contact')
+} )
+
 router.post('/registration', checkNotAuthenticated, async (req, res) => {
     if (req.body.password !== req.body.repassword) {
         req.flash('error', 'wrong password')
