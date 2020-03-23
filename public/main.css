@@ -124,6 +124,20 @@ a.tilelink2
 	margin-bottom: 10px;
 }
 
+.api
+{
+	display: inline-block;	
+	margin: auto;
+	text-align: center;
+}
+
+.api2
+{
+	margin: auto;
+	text-align: center;
+	width: 500px;
+}
+
 .fb
 {
 	display: inline-block;
