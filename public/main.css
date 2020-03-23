@@ -223,6 +223,7 @@ footer
 
 .gallery img{
 	width: 230px;
+	height: 150px;
 	padding: 5px;
 	filter: grayscale(100%);
 	transition: 1s;
