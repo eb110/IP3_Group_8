@@ -124,20 +124,6 @@ a.tilelink2
 	margin-bottom: 10px;
 }
 
-.api
-{
-	display: inline-block;	
-	margin: auto;
-	text-align: center;
-}
-
-.api2
-{
-	margin: auto;
-	text-align: center;
-	width: 500px;
-}
-
 .fb
 {
 	display: inline-block;
@@ -226,8 +212,23 @@ footer
 }
 
 @media screen and (max-width: 1200px) {
-	.overlay, #popup, #popup1, #popup2  {
-		display: none;
+	.overlay {
+		display: none !important;
+	}
+}
+@media screen and (max-width: 1200px) {
+	#popup {
+		display: none !important;
+	}
+}
+@media screen and (max-width: 1200px) {
+	#popup1 {
+		display: none !important;
+	}
+}
+@media screen and (max-width: 1200px) {
+	#popup2 {
+		display: none !important;
 	}
 }
 
@@ -267,3 +268,4 @@ footer
   #myBtn:hover {
 	background-color: #555;
   }
+  
