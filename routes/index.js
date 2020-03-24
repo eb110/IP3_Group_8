@@ -160,7 +160,7 @@ function checkAuthenticated(req, res, next){
 
     router.post('/audi/audi', (req, res) => {
         zenek = []
-        let query = req.body.searchGM
+        let query = req.body.searchWP
         let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search="+ ${query} +"&format=json`
         request(url, function (err, response, body) {
         var wiki = JSON.parse(body)
@@ -176,7 +176,7 @@ function checkAuthenticated(req, res, next){
 
     router.post('/mercedes/mercedes', (req, res) => {
         zenek = []
-        let query = req.body.searchGM
+        let query = req.body.searchWP
         let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search="+ ${query} +"&format=json`
         request(url, function (err, response, body) {
         var wiki = JSON.parse(body)
@@ -192,7 +192,7 @@ function checkAuthenticated(req, res, next){
 
     router.post('/nissan/nissan', (req, res) => {
         zenek = []
-        let query = req.body.searchGM
+        let query = req.body.searchWP
         let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search="+ ${query} +"&format=json`
         request(url, function (err, response, body) {
         var wiki = JSON.parse(body)
@@ -208,7 +208,7 @@ function checkAuthenticated(req, res, next){
 
     router.post('/honda/honda', (req, res) => {
         zenek = []
-        let query = req.body.searchGM
+        let query = req.body.searchWP
         let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search="+ ${query} +"&format=json`
         request(url, function (err, response, body) {
         var wiki = JSON.parse(body)
@@ -224,7 +224,7 @@ function checkAuthenticated(req, res, next){
 
     router.post('/bmw/bmw', (req, res) => {
         zenek = []
-        let query = req.body.searchGM
+        let query = req.body.searchWP
         let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search="+ ${query} +"&format=json`
         request(url, function (err, response, body) {
         var wiki = JSON.parse(body)
@@ -240,7 +240,7 @@ function checkAuthenticated(req, res, next){
 
     router.post('/ford/ford', (req, res) => {
         zenek = []
-        let query = req.body.searchGM
+        let query = req.body.searchWP
         let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search="+ ${query} +"&format=json`
         request(url, function (err, response, body) {
         var wiki = JSON.parse(body)
