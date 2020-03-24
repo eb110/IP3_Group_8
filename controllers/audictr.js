@@ -1,5 +1,14 @@
+
+
+
+
+
+
+
+
+
 exports.audi = (req,res) => {
-    res.render('audi/audi');
+    res.render('audi/audi', {zestaw: []});
 }
 
 exports.a3 = (req,res) => {

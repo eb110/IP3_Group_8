@@ -1,5 +1,5 @@
 exports.nissan = (req,res) => {
-    res.render('nissan/nissan');
+    res.render('nissan/nissan', {zestaw: []});
 }
 
 exports.juke = (req,res) => {

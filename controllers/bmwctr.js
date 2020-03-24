@@ -1,5 +1,5 @@
 exports.bmw = (req,res) => {
-    res.render('bmw/bmw');
+    res.render('bmw/bmw', {zestaw: []});
 }
 
 exports.series_1 = (req,res) => {

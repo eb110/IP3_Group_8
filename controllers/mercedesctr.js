@@ -1,5 +1,5 @@
 exports.mercedes = (req,res) => {
-    res.render('mercedes/mercedes');
+    res.render('mercedes/mercedes', {zestaw: []});
 }
 
 exports.a_class = (req,res) => {

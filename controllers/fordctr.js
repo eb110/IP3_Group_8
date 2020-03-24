@@ -1,5 +1,5 @@
 exports.ford = (req,res) => {
-    res.render('ford/ford');
+    res.render('ford/ford', {zestaw: []});
 }
 
 exports.mustang = (req,res) => {

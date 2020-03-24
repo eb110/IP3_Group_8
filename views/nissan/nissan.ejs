@@ -43,7 +43,48 @@
 					</div>	
 				
 				</div>
-				<%- include('../partials/api') %>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="api">
+				
+							<form action="/nissan/nissan" method="POST">
+								<div class="api2">
+									<h2>Enter your postcode<br>to find nearest Garage:</h2>
+									<input type="text" id="searchGM" name="searchGM" placeholder="Enter name" required />
+									<div><button class="mb-2" type="submit" id="submit">SEARCH</button></div>
+				
+									<% zestaw.forEach(wsad => { %>
+									<div class="card mt-4">
+										<a href="<%= wsad.name %>" target="_blank"><%= wsad.name %></a>
+									</div>
+									<% }) %>
+				
+								</div>
+							</form>
+				
+						</div>
+				
+						<div class="api">
+				
+							<form action="/nissan/nissan" method="POST">
+								<div class="api2">
+									<h2>Enter Model name<br>to find it on Wikipedia:</h2>
+									<input type="text" id="searchWP" name="searchWP" placeholder="Enter name" required />
+									<div><button class="mb-2" type="submit" id="submit">SEARCH</button></div>
+				
+									<% zestaw.forEach(wsad => { %>
+									<div class="card mt-4">
+										<a href="<%= wsad.name %>"><%= wsad.name %></a>
+									</div>
+									<% }) %>
+				
+								</div>
+							</form>
+				
+						</div>
+					</div>
+				
+				</div>
 			</div>	
 				
 		</section>

@@ -1,5 +1,6 @@
 //call express router
 const express = require('express')
+const request = require('request')
 const router = express.Router();
 //hashing feature
 const bcrypt = require('bcryptjs')
@@ -8,6 +9,8 @@ const passport = require('passport')
 
 //db 
 const User = require('../models/user')
+//Api container
+let zenek = []
 
 const MainPages = require('../controllers/MainPages')
 router.get('/', MainPages.home);
@@ -154,5 +157,105 @@ function checkAuthenticated(req, res, next){
         //next just stays your browsing as it is
         next()
     }
+
+    router.post('/audi/audi', (req, res) => {
+        zenek = []
+        let query = req.body.searchGM
+        let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search="+ ${query} +"&format=json`
+        request(url, function (err, response, body) {
+        var wiki = JSON.parse(body)
+        for (var i = 0; i < 5 && i < wiki[1].length; i++) {
+        var data = wiki[3][i] 
+        let pipa = {}
+        pipa.name = data
+        zenek.push(pipa)
+        }
+        res.render('audi/audi.ejs', {zestaw: zenek}) 
+    })   
+    })
+
+    router.post('/mercedes/mercedes', (req, res) => {
+        zenek = []
+        let query = req.body.searchGM
+        let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search="+ ${query} +"&format=json`
+        request(url, function (err, response, body) {
+        var wiki = JSON.parse(body)
+        for (var i = 0; i < 5 && i < wiki[1].length; i++) {
+        var data = wiki[3][i] 
+        let pipa = {}
+        pipa.name = data
+        zenek.push(pipa)
+        }
+        res.render('mercedes/mercedes.ejs', {zestaw: zenek}) 
+    })   
+    })
+
+    router.post('/nissan/nissan', (req, res) => {
+        zenek = []
+        let query = req.body.searchGM
+        let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search="+ ${query} +"&format=json`
+        request(url, function (err, response, body) {
+        var wiki = JSON.parse(body)
+        for (var i = 0; i < 5 && i < wiki[1].length; i++) {
+        var data = wiki[3][i] 
+        let pipa = {}
+        pipa.name = data
+        zenek.push(pipa)
+        }
+        res.render('nissan/nissan.ejs', {zestaw: zenek}) 
+    })   
+    })
+
+    router.post('/honda/honda', (req, res) => {
+        zenek = []
+        let query = req.body.searchGM
+        let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search="+ ${query} +"&format=json`
+        request(url, function (err, response, body) {
+        var wiki = JSON.parse(body)
+        for (var i = 0; i < 5 && i < wiki[1].length; i++) {
+        var data = wiki[3][i] 
+        let pipa = {}
+        pipa.name = data
+        zenek.push(pipa)
+        }
+        res.render('honda/honda.ejs', {zestaw: zenek}) 
+    })   
+    })
+
+    router.post('/bmw/bmw', (req, res) => {
+        zenek = []
+        let query = req.body.searchGM
+        let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search="+ ${query} +"&format=json`
+        request(url, function (err, response, body) {
+        var wiki = JSON.parse(body)
+        for (var i = 0; i < 5 && i < wiki[1].length; i++) {
+        var data = wiki[3][i] 
+        let pipa = {}
+        pipa.name = data
+        zenek.push(pipa)
+        }
+        res.render('bmw/bmw.ejs', {zestaw: zenek}) 
+    })   
+    })
+
+    router.post('/ford/ford', (req, res) => {
+        zenek = []
+        let query = req.body.searchGM
+        let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search="+ ${query} +"&format=json`
+        request(url, function (err, response, body) {
+        var wiki = JSON.parse(body)
+        for (var i = 0; i < 5 && i < wiki[1].length; i++) {
+        var data = wiki[3][i] 
+        let pipa = {}
+        pipa.name = data
+        zenek.push(pipa)
+        }
+        res.render('ford/ford.ejs', {zestaw: zenek}) 
+    })   
+    })
+
+
+
+
 
 module.exports = router;

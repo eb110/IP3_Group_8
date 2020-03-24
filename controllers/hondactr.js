@@ -1,5 +1,5 @@
 exports.honda = (req,res) => {
-    res.render('honda/honda');
+    res.render('honda/honda', {zestaw: []});
 }
 
 exports.civic = (req,res) => {
