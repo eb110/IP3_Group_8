@@ -1,5 +1,5 @@
 exports.honda = (req,res) => {
-    res.render('honda/honda', {zestaw: []});
+    res.render('honda/honda', {apiWiki: []});
 }
 
 exports.civic = (req,res) => {

@@ -1,14 +1,6 @@
 
-
-
-
-
-
-
-
-
 exports.audi = (req,res) => {
-    res.render('audi/audi', {zestaw: []});
+    res.render('audi/audi', {apiWiki: []});
 }
 
 exports.a3 = (req,res) => {

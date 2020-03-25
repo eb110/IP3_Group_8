@@ -55,11 +55,11 @@
 									<input type="text" id="searchGM" name="searchGM" placeholder="Enter name" required />
 									<div><button class="mb-2" type="submit" id="submit">SEARCH</button></div>
 				
-									<% zestaw.forEach(wsad => { %>
-									<div class="card mt-4">
-										<a href="<%= wsad.name %>" target="_blank"><%= wsad.name %></a>
-									</div>
-									<% }) %>
+									<% apiWiki.forEach(wsad => { %>
+										<div class="card mt-4">
+											<a href="<%= wsad.link %>" target="_blank"><%= wsad.name %></a>
+										</div>
+										<% }) %>
 				
 								</div>
 							</form>
@@ -74,11 +74,11 @@
 									<input type="text" id="searchWP" name="searchWP" placeholder="Enter name" required />
 									<div><button class="mb-2" type="submit" id="submit">SEARCH</button></div>
 				
-									<% zestaw.forEach(wsad => { %>
-									<div class="card mt-4">
-										<a href="<%= wsad.name %>" target="_blank"><%= wsad.name %></a>
-									</div>
-									<% }) %>
+									<% apiWiki.forEach(wsad => { %>
+										<div class="card mt-4">
+											<a href="<%= wsad.link %>" target="_blank"><%= wsad.name %></a>
+										</div>
+										<% }) %>
 				
 								</div>
 							</form>

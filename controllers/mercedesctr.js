@@ -1,5 +1,5 @@
 exports.mercedes = (req,res) => {
-    res.render('mercedes/mercedes', {zestaw: []});
+    res.render('mercedes/mercedes', {apiWiki: []});
 }
 
 exports.a_class = (req,res) => {

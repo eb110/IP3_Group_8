@@ -1,5 +1,5 @@
 exports.nissan = (req,res) => {
-    res.render('nissan/nissan', {zestaw: []});
+    res.render('nissan/nissan', {apiWiki: []});
 }
 
 exports.juke = (req,res) => {

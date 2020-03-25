@@ -1,5 +1,5 @@
 exports.ford = (req,res) => {
-    res.render('ford/ford', {zestaw: []});
+    res.render('ford/ford', {apiWiki: []});
 }
 
 exports.mustang = (req,res) => {
