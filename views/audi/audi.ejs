@@ -49,46 +49,31 @@
 				</div>
 				
 				<div class="row">
-					<div class="col-md-12">
-						<div class="api">
-				
-							<form action="/audi/audi" method="POST">
-								<div class="api2">
-									<h2>Enter your postcode<br>to find nearest Garage:</h2>
-									<input type="text" id="searchGM" name="searchGM" placeholder="Enter name" required />
-									<div><button class="mb-2" type="submit" id="submit">SEARCH</button></div>
-				
-									<% apiWiki.forEach(wsad => { %>
-										<div class="card mt-4">
-											<a href="<%= wsad.link %>" target="_blank"><%= wsad.name %></a>
-										</div>
-										<% }) %>
-				
-								</div>
-							</form>
-				
-						</div>
-				
-						<div class="api">
-				
-							<form action="/audi/audi" method="POST">
-								<div class="api2">
-									<h2>Enter Model name<br>to find it on Wikipedia:</h2>
-									<input type="text" id="searchWP" name="searchWP" placeholder="Enter name" required />
-									<div><button class="mb-2" type="submit" id="submit">SEARCH</button></div>
-				
-									<% apiWiki.forEach(wsad => { %>
-										<div class="card mt-4">
-											<a href="<%= wsad.link %>" target="_blank"><%= wsad.name %></a>
-										</div>
-										<% }) %>
-				
-								</div>
-							</form>
-				
-						</div>
+					<div class="col-xl">
+						<label for="name" id="label"> Use Search field to<br> find places/garages:</label><br>
+						<input id="pac-input" class="controls" type="text" placeholder="What are you looking for &#63;">
+						<div id="map"></div><br>
+
 					</div>
-				
+
+						<div class="col-xl">
+						
+							<form role="form" action="/audi/audi" method="POST">
+								
+								<div>
+									<label for="name" id="label"> Enter Brand and Model to<br>find it on Wikipedia:</label><br>
+									<input type="text" id="searchWP" name="searchWP" placeholder="Enter Brand and Model" required />
+								</div><br>
+									<button class="mb-2" type="submit" id="submit">SEARCH</button> <br>
+			
+								<% apiWiki.forEach(wsad => { %>
+									<div class="card mt-4">
+									<a href="<%= wsad.link %>" target="_blank"><%= wsad.name %></a>
+									</div> 
+									<% }) %>
+
+							</form> <br>
+						</div>
 				</div>
 				
 				
