@@ -164,11 +164,12 @@ function checkAuthenticated(req, res, next){
         let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search="+ ${query} +"&format=json`
         request(url, function (err, response, body) {
         var wiki = JSON.parse(body)
-        for (var i = 0; i < 5 && i < wiki[1].length; i++) {
+        for (var i = 0; i < 3 && i < wiki[1].length; i++) {
         var data = wiki[3][i] 
         let shortName = data.substring(data.lastIndexOf("/") + 1)
         let apiLink = {}
         apiLink.link = data
+        apiLink.name = shortName
         apiWikiContainer.push(apiLink)
         }
         res.render('audi/audi.ejs', {apiWiki: apiWikiContainer}) 
@@ -181,7 +182,7 @@ function checkAuthenticated(req, res, next){
         let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search="+ ${query} +"&format=json`
         request(url, function (err, response, body) {
         var wiki = JSON.parse(body)
-        for (var i = 0; i < 5 && i < wiki[1].length; i++) {
+        for (var i = 0; i < 3 && i < wiki[1].length; i++) {
         var data = wiki[3][i] 
         let shortName = data.substring(data.lastIndexOf("/") + 1)
         let apiLink = {}
@@ -199,7 +200,7 @@ function checkAuthenticated(req, res, next){
         let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search="+ ${query} +"&format=json`
         request(url, function (err, response, body) {
         var wiki = JSON.parse(body)
-        for (var i = 0; i < 5 && i < wiki[1].length; i++) {
+        for (var i = 0; i < 3 && i < wiki[1].length; i++) {
         var data = wiki[3][i] 
         let shortName = data.substring(data.lastIndexOf("/") + 1)
         let apiLink = {}
@@ -217,7 +218,7 @@ function checkAuthenticated(req, res, next){
         let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search="+ ${query} +"&format=json`
         request(url, function (err, response, body) {
         var wiki = JSON.parse(body)
-        for (var i = 0; i < 5 && i < wiki[1].length; i++) {
+        for (var i = 0; i < 3 && i < wiki[1].length; i++) {
         var data = wiki[3][i] 
         let shortName = data.substring(data.lastIndexOf("/") + 1)
         let apiLink = {}
@@ -235,7 +236,7 @@ function checkAuthenticated(req, res, next){
         let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search="+ ${query} +"&format=json`
         request(url, function (err, response, body) {
         var wiki = JSON.parse(body)
-        for (var i = 0; i < 5 && i < wiki[1].length; i++) {
+        for (var i = 0; i < 3 && i < wiki[1].length; i++) {
         var data = wiki[3][i] 
         let shortName = data.substring(data.lastIndexOf("/") + 1)
         let apiLink = {}
@@ -253,7 +254,7 @@ function checkAuthenticated(req, res, next){
         let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search="+ ${query} +"&format=json`
         request(url, function (err, response, body) {
         var wiki = JSON.parse(body)
-        for (var i = 0; i < 5 && i < wiki[1].length; i++) {
+        for (var i = 0; i < 3 && i < wiki[1].length; i++) {
         var data = wiki[3][i] 
         let shortName = data.substring(data.lastIndexOf("/") + 1)
         let apiLink = {}
