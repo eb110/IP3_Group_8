@@ -98,11 +98,11 @@ router.post('/contact', (req, res) => {
 
 router.post('/registration', checkNotAuthenticated, async (req, res) => {
     if (req.body.password !== req.body.repassword) {
-        req.flash('error', 'wrong password')
+        req.flash('error', 'Passwords do not match')
         res.redirect('/registration')
     }
     else if (req.body.email !== req.body.reemail) {
-        req.flash('error', 'wrong email')
+        req.flash('error', 'Emails do not match')
         res.redirect('/registration')
     }
     else {
@@ -110,7 +110,7 @@ router.post('/registration', checkNotAuthenticated, async (req, res) => {
             const listUsers = await User.find({})
             const checkUN = listUsers.find(x => x.userName === req.body.name)
             if (checkUN != null) {
-                req.flash('error', 'type different user name')
+                req.flash('error', 'Type different user name')
                 res.redirect('/registration')
             }
             else {

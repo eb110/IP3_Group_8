@@ -178,7 +178,7 @@ footer
 	max-height:100px;
 }
 
-#popup, #popup1, #popup2  {
+#popup, #popup1, #popup2, #popup3, #popup4, #popup5 {
 	position: absolute ;
 	padding: 10px;
 	border: 3px solid #3DA886;
@@ -191,43 +191,8 @@ footer
 	opacity: 0.9;
 }
 
-.overlay {
-	position: absolute;
-	top: 0;
-	bottom: auto;
-	left: 50px;
-	right: 0;
-	height: auto;
-	width: 50%;
-	opacity: 0;
-	transition: .5s ease;
-	background-color: #2f6b58;
-	box-shadow: 5px 5px 5px rgba(0, 0, 0, .3);
-	border: 3px solid #f7f7f7;
-	border-radius: 10px;
-}
-
-.figure:hover .overlay {
-	opacity: 0.9;
-}
-
 @media screen and (max-width: 1200px) {
-	.overlay {
-		display: none !important;
-	}
-}
-@media screen and (max-width: 1200px) {
-	#popup {
-		display: none !important;
-	}
-}
-@media screen and (max-width: 1200px) {
-	#popup1 {
-		display: none !important;
-	}
-}
-@media screen and (max-width: 1200px) {
-	#popup2 {
+	#popup, #popup1, #popup2, #popup3, #popup4, #popup5 {
 		display: none !important;
 	}
 }
